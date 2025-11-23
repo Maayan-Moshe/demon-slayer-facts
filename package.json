@@ -1,0 +1,19 @@
+{
+  "name": "demon-slayer-facts",
+  "version": "1.0.0",
+  "description": "Web site with backend that intends to present facts regarding Demon Slayer (TV series) for young girls",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.13.2",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0"
+  }
+}

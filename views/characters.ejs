@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %> - Demon Slayer Facts</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <span class="decorative-star">✨</span>
+                Demon Slayer Facts
+                <span class="decorative-star">✨</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/characters">Characters</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/breathing-techniques">Breathing Techniques</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/demons">Demons</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="hero-section">
+            <h1 class="hero-title">Meet the Characters! 👥✨</h1>
+            <p class="hero-subtitle">
+                Click on any character to learn more about them!
+            </p>
+        </div>
+
+        <div class="row">
+            <% if (characters && characters.length > 0) { %>
+                <% characters.forEach(function(character) { %>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="character-card">
+                            <% if (character.image) { %>
+                                <img src="<%= character.image %>" alt="<%= character.name %>" onerror="this.src='https://via.placeholder.com/300x250/ff6b9d/ffffff?text=<%= encodeURIComponent(character.name || 'Character') %>'">
+                            <% } else { %>
+                                <img src="https://via.placeholder.com/300x250/ff6b9d/ffffff?text=<%= encodeURIComponent(character.name || 'Character') %>" alt="<%= character.name %>">
+                            <% } %>
+                            <div class="card-body">
+                                <h3 class="character-name"><%= character.name || 'Unknown' %></h3>
+                                <div class="character-info">
+                                    <% if (character.age) { %>
+                                        <p><strong>Age:</strong> <%= character.age %></p>
+                                    <% } %>
+                                    <% if (character.gender) { %>
+                                        <p><strong>Gender:</strong> <%= character.gender %></p>
+                                    <% } %>
+                                    <% if (character.race) { %>
+                                        <p><strong>Race:</strong> <%= character.race %></p>
+                                    <% } %>
+                                </div>
+                                <a href="/character/<%= character.id %>" class="btn btn-primary w-100 mt-2">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <div class="col-12">
+                    <div class="error-container">
+                        <p class="error-message">No characters found! 😢</p>
+                        <a href="/" class="btn btn-primary">Go Back Home</a>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Demon Slayer Facts - Made with 💖 for Demon Slayer Fans!</p>
+        <p>Data provided by <a href="https://www.demonslayer-api.com/" target="_blank" style="color: white; text-decoration: underline;">Demon Slayer API</a></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

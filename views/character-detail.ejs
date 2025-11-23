@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %> - Demon Slayer Facts</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <span class="decorative-star">✨</span>
+                Demon Slayer Facts
+                <span class="decorative-star">✨</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/characters">Characters</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/breathing-techniques">Breathing Techniques</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/demons">Demons</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="detail-section">
+            <% if (character && character.name) { %>
+                <h1 class="detail-title"><%= character.name %> ✨</h1>
+                
+                <% if (character.image) { %>
+                    <img src="<%= character.image %>" alt="<%= character.name %>" class="detail-image" onerror="this.style.display='none'">
+                <% } %>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <% if (character.age) { %>
+                            <p class="info-label">Age:</p>
+                            <p class="info-value"><%= character.age %></p>
+                        <% } %>
+
+                        <% if (character.gender) { %>
+                            <p class="info-label">Gender:</p>
+                            <p class="info-value"><%= character.gender %></p>
+                        <% } %>
+
+                        <% if (character.race) { %>
+                            <p class="info-label">Race:</p>
+                            <p class="info-value"><%= character.race %></p>
+                        <% } %>
+
+                        <% if (character.height) { %>
+                            <p class="info-label">Height:</p>
+                            <p class="info-value"><%= character.height %></p>
+                        <% } %>
+
+                        <% if (character.weight) { %>
+                            <p class="info-label">Weight:</p>
+                            <p class="info-value"><%= character.weight %></p>
+                        <% } %>
+                    </div>
+
+                    <div class="col-md-6">
+                        <% if (character.birthday) { %>
+                            <p class="info-label">Birthday:</p>
+                            <p class="info-value"><%= character.birthday %></p>
+                        <% } %>
+
+                        <% if (character.affiliation) { %>
+                            <p class="info-label">Affiliation:</p>
+                            <p class="info-value"><%= character.affiliation %></p>
+                        <% } %>
+
+                        <% if (character.status) { %>
+                            <p class="info-label">Status:</p>
+                            <p class="info-value"><%= character.status %></p>
+                        <% } %>
+
+                        <% if (character.occupation) { %>
+                            <p class="info-label">Occupation:</p>
+                            <p class="info-value"><%= character.occupation %></p>
+                        <% } %>
+                    </div>
+                </div>
+
+                <% if (character.abilities && character.abilities.length > 0) { %>
+                    <p class="info-label">Abilities:</p>
+                    <div>
+                        <% character.abilities.forEach(function(ability) { %>
+                            <span class="badge-custom"><%= ability %></span>
+                        <% }); %>
+                    </div>
+                <% } %>
+
+                <% if (character.description) { %>
+                    <p class="info-label">Description:</p>
+                    <p class="info-value"><%= character.description %></p>
+                <% } %>
+
+                <div class="text-center mt-4">
+                    <a href="/characters" class="btn btn-primary">← Back to Characters</a>
+                </div>
+            <% } else { %>
+                <div class="error-container">
+                    <p class="error-message">Character not found! 😢</p>
+                    <a href="/characters" class="btn btn-primary">Back to Characters</a>
+                </div>
+            <% } %>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Demon Slayer Facts - Made with 💖 for Demon Slayer Fans!</p>
+        <p>Data provided by <a href="https://www.demonslayer-api.com/" target="_blank" style="color: white; text-decoration: underline;">Demon Slayer API</a></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
