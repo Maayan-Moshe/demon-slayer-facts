@@ -1,6 +1,7 @@
 const express = require('express');
 const axios = require('axios');
 const path = require('path');
+const { mockCharacters, mockBreathingTechniques, mockDemons } = require('./mockData');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -19,6 +20,9 @@ app.use(express.json());
 // Demon Slayer API base URL
 const API_BASE_URL = 'https://demonslayer-api.com/api/v1';
 
+// Flag to use mock data (set to true when API is unavailable)
+const USE_MOCK_DATA = true;
+
 // Routes
 app.get('/', (req, res) => {
     res.render('index', { title: 'Demon Slayer Facts' });
@@ -27,16 +31,25 @@ app.get('/', (req, res) => {
 // Get all characters
 app.get('/characters', async (req, res) => {
     try {
-        const response = await axios.get(`${API_BASE_URL}/characters`);
+        let characters = [];
+        
+        if (USE_MOCK_DATA) {
+            characters = mockCharacters;
+        } else {
+            const response = await axios.get(`${API_BASE_URL}/characters`);
+            characters = response.data.content || [];
+        }
+        
         res.render('characters', { 
             title: 'Characters',
-            characters: response.data.content || []
+            characters: characters
         });
     } catch (error) {
         console.error('Error fetching characters:', error.message);
-        res.render('error', { 
-            title: 'Error',
-            error: 'Unable to fetch characters. Please try again later.'
+        // Fallback to mock data on error
+        res.render('characters', { 
+            title: 'Characters',
+            characters: mockCharacters
         });
     }
 });
@@ -44,16 +57,26 @@ app.get('/characters', async (req, res) => {
 // Get character details
 app.get('/character/:id', async (req, res) => {
     try {
-        const response = await axios.get(`${API_BASE_URL}/characters/${req.params.id}`);
+        let character = {};
+        
+        if (USE_MOCK_DATA) {
+            character = mockCharacters.find(c => c.id === parseInt(req.params.id)) || {};
+        } else {
+            const response = await axios.get(`${API_BASE_URL}/characters/${req.params.id}`);
+            character = response.data.content || {};
+        }
+        
         res.render('character-detail', { 
             title: 'Character Details',
-            character: response.data.content || {}
+            character: character
         });
     } catch (error) {
         console.error('Error fetching character details:', error.message);
-        res.render('error', { 
-            title: 'Error',
-            error: 'Unable to fetch character details. Please try again later.'
+        // Fallback to mock data on error
+        const character = mockCharacters.find(c => c.id === parseInt(req.params.id)) || {};
+        res.render('character-detail', { 
+            title: 'Character Details',
+            character: character
         });
     }
 });
@@ -61,16 +84,25 @@ app.get('/character/:id', async (req, res) => {
 // Get all breathing techniques
 app.get('/breathing-techniques', async (req, res) => {
     try {
-        const response = await axios.get(`${API_BASE_URL}/breathings`);
+        let techniques = [];
+        
+        if (USE_MOCK_DATA) {
+            techniques = mockBreathingTechniques;
+        } else {
+            const response = await axios.get(`${API_BASE_URL}/breathings`);
+            techniques = response.data.content || [];
+        }
+        
         res.render('breathing-techniques', { 
             title: 'Breathing Techniques',
-            techniques: response.data.content || []
+            techniques: techniques
         });
     } catch (error) {
         console.error('Error fetching breathing techniques:', error.message);
-        res.render('error', { 
-            title: 'Error',
-            error: 'Unable to fetch breathing techniques. Please try again later.'
+        // Fallback to mock data on error
+        res.render('breathing-techniques', { 
+            title: 'Breathing Techniques',
+            techniques: mockBreathingTechniques
         });
     }
 });
@@ -78,16 +110,25 @@ app.get('/breathing-techniques', async (req, res) => {
 // Get all demons
 app.get('/demons', async (req, res) => {
     try {
-        const response = await axios.get(`${API_BASE_URL}/demons`);
+        let demons = [];
+        
+        if (USE_MOCK_DATA) {
+            demons = mockDemons;
+        } else {
+            const response = await axios.get(`${API_BASE_URL}/demons`);
+            demons = response.data.content || [];
+        }
+        
         res.render('demons', { 
             title: 'Demons',
-            demons: response.data.content || []
+            demons: demons
         });
     } catch (error) {
         console.error('Error fetching demons:', error.message);
-        res.render('error', { 
-            title: 'Error',
-            error: 'Unable to fetch demons. Please try again later.'
+        // Fallback to mock data on error
+        res.render('demons', { 
+            title: 'Demons',
+            demons: mockDemons
         });
     }
 });

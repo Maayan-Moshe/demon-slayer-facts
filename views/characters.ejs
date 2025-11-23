@@ -15,7 +15,7 @@
                 Demon Slayer Facts
                 <span class="decorative-star">✨</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -51,9 +51,9 @@
                     <div class="col-md-6 col-lg-4">
                         <div class="character-card">
                             <% if (character.image) { %>
-                                <img src="<%= character.image %>" alt="<%= character.name %>" onerror="this.src='https://via.placeholder.com/300x250/ff6b9d/ffffff?text=<%= encodeURIComponent(character.name) %>'">
+                                <img src="<%= character.image %>" alt="<%= character.name %>" onerror="this.src='https://via.placeholder.com/300x250/ff6b9d/ffffff?text=<%= encodeURIComponent(character.name || 'Character') %>'">
                             <% } else { %>
-                                <img src="https://via.placeholder.com/300x250/ff6b9d/ffffff?text=<%= encodeURIComponent(character.name) %>" alt="<%= character.name %>">
+                                <img src="https://via.placeholder.com/300x250/ff6b9d/ffffff?text=<%= encodeURIComponent(character.name || 'Character') %>" alt="<%= character.name %>">
                             <% } %>
                             <div class="card-body">
                                 <h3 class="character-name"><%= character.name || 'Unknown' %></h3>

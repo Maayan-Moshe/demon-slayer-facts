@@ -15,7 +15,7 @@
                 Demon Slayer Facts
                 <span class="decorative-star">✨</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -51,7 +51,7 @@
                     <div class="col-md-6 col-lg-4">
                         <div class="character-card">
                             <% if (demon.image) { %>
-                                <img src="<%= demon.image %>" alt="<%= demon.name %>" onerror="this.src='https://via.placeholder.com/300x250/8b5a8e/ffffff?text=<%= encodeURIComponent(demon.name) %>'">
+                                <img src="<%= demon.image %>" alt="<%= demon.name %>" onerror="this.src='https://via.placeholder.com/300x250/8b5a8e/ffffff?text=<%= encodeURIComponent(demon.name || 'Demon') %>'">
                             <% } else { %>
                                 <img src="https://via.placeholder.com/300x250/8b5a8e/ffffff?text=<%= encodeURIComponent(demon.name || 'Demon') %>" alt="<%= demon.name || 'Demon' %>">
                             <% } %>
