@@ -46,6 +46,7 @@ A fun and colorful web application designed for girls aged 11 years that present
 ```
 demon-slayer-facts/
 ├── app.js                 # Main Express server
+├── mockData.js            # Mock data for fallback
 ├── package.json           # Project dependencies
 ├── public/               
 │   └── css/
