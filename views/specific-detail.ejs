@@ -1,0 +1,93 @@
+<%- include('partials/header') %>
+
+    <div class="container">
+        <div class="detail-section">
+            <% if (specificData && specificData.name) { %>
+                <h1 class="detail-title"><%= specificData.name %> ✨</h1>
+                
+                <div class="detail-content-wrapper">
+                    <% if (specificData.img) { %>
+                        <img src= <%= specificData.img %> alt="<%= specificData.name %>" class="detail-image" onerror="this.style.display='none'">
+                    <% } %>
+
+                    <div class="detail-info-section">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <% if (specificData.age) { %>
+                                    <p class="info-label">Age:</p>
+                                    <p class="info-value"><%= specificData.age %></p>
+                                <% } %>
+
+                                <% if (specificData.gender) { %>
+                                    <p class="info-label">Gender:</p>
+                                    <p class="info-value"><%= specificData.gender %></p>
+                                <% } %>
+
+                                <% if (specificData.race) { %>
+                                    <p class="info-label">Race:</p>
+                                    <p class="info-value"><%= specificData.race %></p>
+                                <% } %>
+
+                                <% if (specificData.height) { %>
+                                    <p class="info-label">Height:</p>
+                                    <p class="info-value"><%= specificData.height %></p>
+                                <% } %>
+
+                                <% if (specificData.weight) { %>
+                                    <p class="info-label">Weight:</p>
+                                    <p class="info-value"><%= specificData.weight %></p>
+                                <% } %>
+                            </div>
+
+                            <div class="col-md-6">
+                                <% if (specificData.birthday) { %>
+                                    <p class="info-label">Birthday:</p>
+                                    <p class="info-value"><%= specificData.birthday %></p>
+                                <% } %>
+
+                                <% if (specificData.affiliation) { %>
+                                    <p class="info-label">Affiliation:</p>
+                                    <p class="info-value"><%= specificData.affiliation %></p>
+                                <% } %>
+
+                                <% if (specificData.status) { %>
+                                    <p class="info-label">Status:</p>
+                                    <p class="info-value"><%= specificData.status %></p>
+                                <% } %>
+
+                                <% if (specificData.occupation) { %>
+                                    <p class="info-label">Occupation:</p>
+                                    <p class="info-value"><%= specificData.occupation %></p>
+                                <% } %>
+                            </div>
+                        </div>
+
+                        <% if (specificData.abilities && specificData.abilities.length > 0) { %>
+                            <p class="info-label">Abilities:</p>
+                            <div>
+                                <% specificData.abilities.forEach(function(ability) { %>
+                                    <span class="badge-custom"><%= ability %></span>
+                                <% }); %>
+                            </div>
+                        <% } %>
+
+                        <% if (specificData.description) { %>
+                            <p class="info-label">Description:</p>
+                            <p class="info-value"><%= specificData.description %></p>
+                        <% } %>
+                    </div>
+                </div>
+
+                <div class="text-center mt-4">
+                    <a href="/characters" class="btn btn-primary">← Back to Characters</a>
+                </div>
+            <% } else { %>
+                <div class="error-container">
+                    <p class="error-message">Character not found! 😢</p>
+                    <a href="/characters" class="btn btn-primary">Back to Characters</a>
+                </div>
+            <% } %>
+        </div>
+    </div>
+
+<%- include('partials/footer') %>

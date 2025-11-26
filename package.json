@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Web site with backend that intends to present facts regarding Demon Slayer (TV series) for young girls",
   "main": "app.js",
+  "type": "module",
   "scripts": {
     "start": "node app.js",
     "dev": "node app.js",

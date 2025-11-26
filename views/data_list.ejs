@@ -1,0 +1,54 @@
+<%- include('partials/header') %>
+
+    <div class="container">
+      <div class="hero-section">
+        <h1 class="hero-title"><%= hero_title %></h1>
+        <p class="hero-subtitle"><%= hero_subtitle %></p>
+      </div>
+
+      <div class="row">
+        <% if (dataList && dataList.length > 0) { %> <%
+        dataList.forEach(function(item) { %>
+        <div class="col-md-6 col-lg-4">
+          <div class="character-card">
+            <% if (item.img) { %>
+            <img src= <%= item.img %> alt="<%= item.name %>"
+            onerror="this.src='https://via.placeholder.com/300x250/ff6b9d/ffffff?text=<%=
+            encodeURIComponent(item.name || 'Item') %>'"> <% } else {
+            %>
+            <img
+              src="https://via.placeholder.com/300x250/ff6b9d/ffffff?text=<%= encodeURIComponent(item.name || 'Item') %>"
+              alt="<%= item.name %>"
+            />
+            <% } %>
+            <div class="card-body">
+              <h3 class="character-name"><%= item.name || 'Unknown' %></h3>
+              <div class="character-info">
+                <% if (item.age) { %>
+                <p><strong>Age:</strong> <%= item.age %></p>
+                <% } %> <% if (item.gender) { %>
+                <p><strong>Gender:</strong> <%= item.gender %></p>
+                <% } %> <% if (item.race) { %>
+                <p><strong>Race:</strong> <%= item.race %></p>
+                <% } %>
+              </div>
+              <a
+                href="/<%= type %>/<%= item.id %>"
+                class="btn btn-primary w-100 mt-2"
+                >Learn More</a
+              >
+            </div>
+          </div>
+        </div>
+        <% }); %> <% } else { %>
+        <div class="col-12">
+          <div class="error-container">
+            <p class="error-message">No items found! 😢</p>
+            <a href="/" class="btn btn-primary">Go Back Home</a>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </div>
+
+<%- include('partials/footer') %>

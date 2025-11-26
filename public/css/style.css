@@ -1,24 +1,38 @@
 /* Demon Slayer themed styles for young girls */
 :root {
-    --primary-pink: #ff6b9d;
-    --secondary-pink: #ffc2d4;
-    --accent-purple: #c996cc;
-    --dark-purple: #8b5a8e;
-    --light-pink: #ffe4ed;
-    --text-dark: #4a4a4a;
+    /* New palette */
+    --primary-pink: #9D3148;
+    /* deep rose */
+    --secondary-pink: #F6BABC;
+    /* soft pink */
+    --accent-purple: #EAAFC6;
+    /* rosy accent */
+    --dark-purple: #464040;
+    /* deep neutral */
+    --light-pink: #FCF4F1;
+    /* light background */
+    --text-dark: #464040;
+    /* text dark */
     --text-light: #ffffff;
+    /* text light */
+    --accent-olive: #9FAE78;
+    /* olive accent */
+    --accent-rust: #C3663E;
+    /* rust accent */
+    --accent-cream: #F9E2CE;
+    /* cream accent */
 }
 
 body {
     font-family: 'Comic Sans MS', 'Arial', sans-serif;
-    background: linear-gradient(135deg, var(--light-pink) 0%, var(--secondary-pink) 100%);
+    background: var(--accent-cream);
     min-height: 100vh;
     color: var(--text-dark);
 }
 
 .navbar {
-    background: linear-gradient(90deg, var(--primary-pink) 0%, var(--accent-purple) 100%);
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    background: var(--primary-pink);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 1rem 0;
 }
 
@@ -26,7 +40,7 @@ body {
     font-size: 1.8rem;
     font-weight: bold;
     color: var(--text-light) !important;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .navbar-nav .nav-link {
@@ -38,7 +52,7 @@ body {
 
 .navbar-nav .nav-link:hover {
     transform: translateY(-2px);
-    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .hero-section {
@@ -54,7 +68,7 @@ body {
 .hero-title {
     font-size: 3rem;
     color: var(--primary-pink);
-    text-shadow: 3px 3px 6px rgba(0,0,0,0.1);
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
     margin-bottom: 1rem;
     font-weight: bold;
 }
@@ -63,6 +77,10 @@ body {
     font-size: 1.3rem;
     color: var(--dark-purple);
     margin-bottom: 2rem;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .menu-section {
@@ -75,14 +93,14 @@ body {
     color: var(--primary-pink);
     font-size: 2rem;
     margin-bottom: 2rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .menu-card {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(249, 226, 206, 0.95);
     border: none;
     border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(255, 107, 157, 0.2);
+    box-shadow: 0 8px 20px rgba(157, 49, 72, 0.15);
     transition: all 0.3s ease;
     margin-bottom: 1.5rem;
     overflow: hidden;
@@ -107,13 +125,13 @@ body {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--primary-pink) 0%, var(--accent-purple) 100%);
+    background: var(--accent-olive);
     border: none;
     border-radius: 25px;
     padding: 0.8rem 2rem;
     font-weight: bold;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(255, 107, 157, 0.3);
+    box-shadow: 0 4px 10px rgba(157, 49, 72, 0.25);
 }
 
 .btn-primary:hover {
@@ -122,28 +140,37 @@ body {
 }
 
 .character-card {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(252, 244, 241, 0.95);
     border: none;
     border-radius: 15px;
     overflow: hidden;
     margin-bottom: 1.5rem;
-    box-shadow: 0 5px 15px rgba(255, 107, 157, 0.2);
+    box-shadow: 0 5px 15px rgba(70, 64, 64, 0.15);
     transition: all 0.3s ease;
+    height: 550px;
+    display: flex;
+    flex-direction: column;
 }
 
 .character-card:hover {
     transform: scale(1.03);
-    box-shadow: 0 8px 25px rgba(255, 107, 157, 0.4);
+    box-shadow: 0 8px 25px rgba(157, 49, 72, 0.25);
 }
 
 .character-card img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
+    width: 80%;
+    height: 300px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    flex-shrink: 0;
 }
 
 .character-card .card-body {
     padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .character-name {
@@ -169,26 +196,36 @@ body {
 }
 
 .detail-section {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(252, 244, 241, 0.95);
     border-radius: 20px;
     padding: 2rem;
     margin: 2rem auto;
     max-width: 900px;
-    box-shadow: 0 10px 30px rgba(255, 107, 157, 0.3);
+    box-shadow: 0 10px 30px rgba(70, 64, 64, 0.15);
 }
 
 .detail-title {
     color: var(--primary-pink);
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .detail-image {
-    max-width: 100%;
+    width: 100%;
     border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     margin-bottom: 1.5rem;
+    display: block;
+}
+
+.detail-content-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.detail-info-section {
+    width: 100%;
 }
 
 .info-label {
@@ -200,6 +237,9 @@ body {
 .info-value {
     color: var(--text-dark);
     margin-bottom: 0.5rem;
+    text-align: justify;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .error-container {
@@ -226,18 +266,25 @@ body {
 }
 
 footer {
-    background: linear-gradient(90deg, var(--primary-pink) 0%, var(--accent-purple) 100%);
+    background: linear-gradient(90deg, var(--primary-pink) 0%, var(--accent-rust) 100%);
     color: var(--text-light);
     text-align: center;
     padding: 1.5rem;
     margin-top: 3rem;
-    box-shadow: 0 -4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Sparkle animation for fun effect */
 @keyframes sparkle {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
 }
 
 .sparkle {
