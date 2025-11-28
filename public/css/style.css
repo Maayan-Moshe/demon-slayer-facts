@@ -44,7 +44,7 @@ body {
 }
 
 .navbar-nav .nav-link {
-    color: var(--text-light) !important;
+    color: var(--text-light);
     font-weight: 500;
     margin: 0 0.5rem;
     transition: all 0.3s ease;
@@ -319,4 +319,8 @@ footer {
 
 .info-value .info-value {
     text-indent: 20px;
+}
+
+.maayan-moshe {
+    color: var(--accent-cream) !important;
 }
