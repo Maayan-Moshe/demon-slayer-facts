@@ -1,98 +1,85 @@
-# Demon Slayer Facts ✨
+# Demon Slayer Facts ✨🌸
 
-A fun and colorful web application designed for girls aged 11 years that presents facts about the Demon Slayer (Kimetsu no Yaiba) TV series! 🌸
+Welcome to **Demon Slayer Facts**! This is a delightful web application designed to present fun and interesting facts about the *Demon Slayer: Kimetsu no Yaiba* universe, with a special theme tailored for young fans! 💖
 
-## Features 🎉
+## 🌟 Features
 
-- **Interactive Menu**: Choose from different categories to explore
-- **Characters**: Browse and learn about all your favorite Demon Slayer characters
-- **Breathing Techniques**: Discover the amazing breathing styles and their powers
-- **Demons**: Find out about the villains and their stories
-- **Beautiful Design**: Pink and purple themed interface designed for young girls
-- **Bootstrap UI**: Responsive and mobile-friendly design
-- **Real-time Data**: Fetches data from the official Demon Slayer API
+- **Explore Characters**: Meet your favorite characters like Tanjiro, Nezuko, Zenitsu, and more! 👥
+- **Discover Combat Styles**: Learn about the unique Breathing Styles and Blood Demon Arts! ⚔️
+- **Detailed Information**: Click on any card to see detailed stats, descriptions, and abilities. 📜
+- **Cute & Responsive Design**: A beautiful, pink-themed interface that looks great on both desktop and mobile devices. 📱💻
+- **Robust Data Handling**: Fetches live data from the Demon Slayer API, with a reliable fallback to local mock data if the API is unavailable. 🛡️
 
-## Technologies Used 💻
+## 🛠️ Technologies Used
 
-- **Backend**: Node.js with Express
-- **View Engine**: EJS (Embedded JavaScript Templates)
+- **Backend**: Node.js, Express.js
+- **Frontend**: EJS (Embedded JavaScript), CSS3, Bootstrap 5
 - **HTTP Client**: Axios
-- **Styling**: Bootstrap 5 + Custom CSS
-- **API**: [Demon Slayer API](https://www.demonslayer-api.com/documentation)
+- **Data Source**: [Demon Slayer API](https://demonslayer-api.com/)
 
-## Installation & Setup 🚀
+## 🚀 Getting Started
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/Maayan-Moshe/demon-slayer-facts.git
-   cd demon-slayer-facts
-   ```
+Follow these steps to get the project running on your local machine:
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+### Prerequisites
 
-3. **Start the server**
-   ```bash
-   npm start
-   ```
+- [Node.js](https://nodejs.org/) installed on your computer.
 
-4. **Open your browser**
-   Navigate to `http://localhost:3000`
+### Installation
 
-## Project Structure 📁
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/Maayan-Moshe/demon-slayer-facts.git
+    cd demon-slayer-facts
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+
+3.  **Start the server:**
+    ```bash
+    npm start
+    ```
+    *Or for development:*
+    ```bash
+    npm run dev
+    ```
+
+4.  **Open your browser:**
+    Navigate to `http://localhost:3000` to view the app! 🎉
+
+## 📂 Project Structure
 
 ```
 demon-slayer-facts/
-├── app.js                 # Main Express server
-├── mockData.js            # Mock data for fallback
-├── package.json           # Project dependencies
-├── public/               
+├── public/             # Static files (CSS, images)
 │   └── css/
-│       └── style.css      # Custom styling
-├── views/
-│   ├── index.ejs          # Home page
-│   ├── characters.ejs     # Characters list page
-│   ├── character-detail.ejs  # Individual character page
-│   ├── breathing-techniques.ejs  # Breathing techniques page
-│   ├── demons.ejs         # Demons list page
-│   └── error.ejs          # Error page
-└── README.md
+│       └── style.css   # Custom styling
+├── views/              # EJS Templates
+│   ├── partials/       # Reusable components (header, footer)
+│   ├── data_list.ejs   # List view for characters/styles
+│   ├── index.ejs       # Homepage
+│   └── specific-detail.ejs # Detailed view
+├── app.js              # Main Express application
+├── mockData.js         # Fallback data
+├── package.json        # Project dependencies and scripts
+└── README.md           # Project documentation
 ```
 
-## How to Use 📚
+## 🎨 Theme
 
-1. **Home Page**: Start at the home page and choose what you want to explore
-2. **Browse Categories**: Click on Characters, Breathing Techniques, or Demons
-3. **View Details**: Click on any item to see more detailed information
-4. **Navigate**: Use the navigation menu at the top to switch between sections
+The application features a custom "Demon Slayer for Girls" theme, utilizing a palette of:
+- Primary Pink: `#9D3148`
+- Soft Pink: `#F6BABC`
+- Rosy Accent: `#EAAFC6`
+- Cream Accent: `#F9E2CE`
 
-## API Endpoints Used 🔗
+## 📝 License
 
-- `GET /` - Home page
-- `GET /characters` - List all characters
-- `GET /character/:id` - Get character details
-- `GET /breathing-techniques` - List all breathing techniques
-- `GET /demons` - List all demons
-
-## Design Philosophy 🎨
-
-The website is designed with:
-- Bright, friendly colors (pinks and purples)
-- Large, easy-to-read text
-- Simple navigation
-- Fun emojis and decorative elements
-- Age-appropriate content presentation
-
-## Contributing 🤝
-
-Feel free to submit issues and pull requests to improve the application!
-
-## License 📄
-
-ISC
+This project is open source and available under the [ISC License](LICENSE).
 
 ---
 
-Made with 💖 for Demon Slayer fans!
+Made with 💖 by Maayan Moshe
