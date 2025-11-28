@@ -21,6 +21,7 @@ const dataTypes = {
       "Discover the brave warriors and formidable foes of Demon Slayer universe.",
     card_description:
       "Explore the diverse characters that make up the world of Demon Slayer, from fearless warriors to menacing demons.",
+    other_type: "combat-styles"
   },
   "combat-styles": {
     type: "combat-styles",
@@ -31,6 +32,7 @@ const dataTypes = {
       "Uncover the unique fighting techniques and skills of Demon Slayer warriors.",
     card_description:
       "Dive into the various combat styles used by Demon Slayer warriors to defeat their foes.",
+    other_type: "characters"
   },
 };
 
@@ -87,7 +89,10 @@ async function renderDataList(res, dataType, ejsContent) {
       data_list = response.data.content || [];
     }
 
-    res.render("data_list", { ...ejsContent, ...{ dataList: data_list }, dataTypes: dataTypes});
+    res.render("data_list", { ...ejsContent, 
+                ...{ dataList: data_list }, 
+                dataTypes: dataTypes,
+                capitalizeFirstLetter: capitalizeFirstLetter,});
   } catch (error) {
     console.error("Error fetching characters:", error.message);
     // Fallback to mock data on error
@@ -99,6 +104,8 @@ async function renderDataList(res, dataType, ejsContent) {
             `mock${dataType.charAt(0).toUpperCase() + dataType.slice(1)}`
           ],
       },
+      dataTypes: dataTypes,
+      capitalizeFirstLetter: capitalizeFirstLetter,
     });
   }
 }
@@ -119,7 +126,9 @@ async function getSpecificDetails(req, res) {
     res.render("specific-detail", {
       title: `${capitalizeFirstLetter(dataType)} Details`,
       specificData: specificData,
-      dataTypes: dataTypes
+      ejsContent: dataTypes[dataType],
+      dataTypes: dataTypes,
+      capitalizeFirstLetter: capitalizeFirstLetter,
     });
   } catch (error) {
     console.error("Error fetching character details:", error.message);

@@ -1,59 +1,55 @@
 <%- include('partials/header') %>
 
-    <div class="container">
-      <div class="hero-section">
-        <h1 class="hero-title">Welcome to Demon Slayer Facts! ✨</h1>
-        <p class="hero-subtitle">
-          Discover amazing facts about your favorite Demon Slayer characters,
-          breathing techniques, and more!
-        </p>
-        <p style="font-size: 1.1rem; color: #8b5a8e">
-          Choose what you'd like to explore below! 💖
-        </p>
-      </div>
+<div class="container">
+  <div class="hero-section">
+    <h1 class="hero-title">Welcome to Demon Slayer Facts! ✨</h1>
+    <p class="hero-subtitle">
+      Discover amazing facts about your favorite Demon Slayer characters,
+      breathing techniques, and more!
+    </p>
+    <p style="font-size: 1.1rem; color: #8b5a8e">
+      Choose what you'd like to explore below! 💖
+    </p>
+  </div>
 
-      <div class="menu-section">
-        <h2 class="menu-title">What would you like to know? 🌸</h2>
+  <div class="menu-section">
+    <h2 class="menu-title">What would you like to know? 🌸</h2>
 
-        <div class="row">
-          <% Object.keys(dataTypes).forEach(dataType => { %>
-            <div class="col-md-6 col-lg-3">
-                <div class="menu-card">
-                <div class="card-header">
-                    <%= `${dataTypes[dataType].icon} ${dataTypes[dataType].title}` %>
-                </div>
-                <div class="card-body">
-                    <p><%= dataTypes[dataType].card_description %></p>
-                    <a href="/<%= dataType %>" class="btn btn-primary w-100"
-                    ><%= dataTypes[dataType].card_description %></a
-                    >
-                </div>
-                </div>
-            </div>
-          <% }); %>
+    <div class="row menu-cards-container">
+      <% Object.keys(dataTypes).forEach(dataType => { %>
+      <div class="col-12">
+        <div class="menu-card">
+          <div class="card-header">
+            <%= `${dataTypes[dataType].icon} ${dataTypes[dataType].title}` %>
+          </div>
+          <div class="card-body">
+            <p><%= dataTypes[dataType].card_description %></p>
+            <a href="/<%= dataType %>" class="btn btn-primary w-100"
+              ><%= dataTypes[dataType].card_description %></a
+            >
+          </div>
         </div>
       </div>
-
-      <div class="hero-section mt-4">
-        <h3 style="color: #ff6b9d; margin-bottom: 1rem">
-          How to Use This Site 📚
-        </h3>
-        <div class="text-start" style="max-width: 600px; margin: 0 auto">
-          <p>
-            <strong>1.</strong> Click on any category above to start exploring!
-            🎯
-          </p>
-          <p>
-            <strong>2.</strong> Browse through <%= Object.keys(dataTypes).toString() %>
-            🔍
-          </p>
-          <p><strong>3.</strong> Click on any item to learn more details! 💫</p>
-          <p>
-            <strong>4.</strong> Have fun discovering the world of Demon Slayer!
-            🎉
-          </p>
-        </div>
-      </div>
+      <% }); %>
     </div>
+  </div>
+
+  <div class="hero-section mt-4">
+    <h3 style="color: #ff6b9d; margin-bottom: 1rem">How to Use This Site 📚</h3>
+    <div class="text-start" style="max-width: 600px; margin: 0 auto">
+      <p>
+        <strong>1.</strong> Click on any category above to start exploring! 🎯
+      </p>
+      <p>
+        <strong>2.</strong> Browse through <%= Object.keys(dataTypes).toString()
+        %> 🔍
+      </p>
+      <p><strong>3.</strong> Click on any item to learn more details! 💫</p>
+      <p>
+        <strong>4.</strong> Have fun discovering the world of Demon Slayer! 🎉
+      </p>
+    </div>
+  </div>
+</div>
 
 <%- include('partials/footer') %>

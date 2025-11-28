@@ -6,7 +6,7 @@
         <p class="hero-subtitle"><%= hero_subtitle %></p>
       </div>
 
-      <div class="row">
+      <div class="row character-grid">
         <% if (dataList && dataList.length > 0) { %> <%
         dataList.forEach(function(item) { %>
         <div class="col-md-6 col-lg-4">
@@ -24,13 +24,11 @@
             <div class="card-body">
               <h3 class="character-name"><%= item.name || 'Unknown' %></h3>
               <div class="character-info">
-                <% if (item.age) { %>
-                <p><strong>Age:</strong> <%= item.age %></p>
-                <% } %> <% if (item.gender) { %>
-                <p><strong>Gender:</strong> <%= item.gender %></p>
-                <% } %> <% if (item.race) { %>
-                <p><strong>Race:</strong> <%= item.race %></p>
-                <% } %>
+                <% Object.entries(item).forEach(([key, value]) => { %>
+                  <% if (key !== 'name' && key !== 'img' && value && typeof value !== 'object' && !key.includes('id')) { %>
+                    <p><strong><%= capitalizeFirstLetter(key) %>:</strong> <%= value %></p>
+                  <% } %>
+                <% }); %>
               </div>
               <a
                 href="/<%= type %>/<%= item.id %>"

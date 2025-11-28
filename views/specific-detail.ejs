@@ -13,52 +13,22 @@
                     <div class="detail-info-section">
                         <div class="row">
                             <div class="col-md-6">
-                                <% if (specificData.age) { %>
-                                    <p class="info-label">Age:</p>
-                                    <p class="info-value"><%= specificData.age %></p>
-                                <% } %>
-
-                                <% if (specificData.gender) { %>
-                                    <p class="info-label">Gender:</p>
-                                    <p class="info-value"><%= specificData.gender %></p>
-                                <% } %>
-
-                                <% if (specificData.race) { %>
-                                    <p class="info-label">Race:</p>
-                                    <p class="info-value"><%= specificData.race %></p>
-                                <% } %>
-
-                                <% if (specificData.height) { %>
-                                    <p class="info-label">Height:</p>
-                                    <p class="info-value"><%= specificData.height %></p>
-                                <% } %>
-
-                                <% if (specificData.weight) { %>
-                                    <p class="info-label">Weight:</p>
-                                    <p class="info-value"><%= specificData.weight %></p>
-                                <% } %>
-                            </div>
-
-                            <div class="col-md-6">
-                                <% if (specificData.birthday) { %>
-                                    <p class="info-label">Birthday:</p>
-                                    <p class="info-value"><%= specificData.birthday %></p>
-                                <% } %>
-
-                                <% if (specificData.affiliation) { %>
-                                    <p class="info-label">Affiliation:</p>
-                                    <p class="info-value"><%= specificData.affiliation %></p>
-                                <% } %>
-
-                                <% if (specificData.status) { %>
-                                    <p class="info-label">Status:</p>
-                                    <p class="info-value"><%= specificData.status %></p>
-                                <% } %>
-
-                                <% if (specificData.occupation) { %>
-                                    <p class="info-label">Occupation:</p>
-                                    <p class="info-value"><%= specificData.occupation %></p>
-                                <% } %>
+                                <% Object.entries(specificData).forEach(([key, value]) => { %>
+                                    <% if (key !== 'img' && value && typeof value !== 'object' && !key.includes('id')) { %>
+                                        <p class="info-label"><%= capitalizeFirstLetter(key) %>:</p>
+                                        <p class="info-value"><%= value %></p>
+                                    <% } else if (Array.isArray(value)) { %>
+                                        <p class="info-label"><%= capitalizeFirstLetter(key).replaceAll('_', ' ') + 's' %>:</p>
+                                        <div class="info-value">
+                                            <% Object.values(value).forEach(function(subValue) { %>
+                                                <a href="<%= '/' + ejsContent.other_type + '/' + subValue.id %>">
+                                                    <p class="info-label"><%= capitalizeFirstLetter(subValue.name) %>:</p>
+                                                </a>
+                                                <p class="info-value"><%= subValue.description %></p>
+                                            <% }); %>
+                                        </div>
+                                    <% } %>
+                                <% }); %>
                             </div>
                         </div>
 
@@ -79,12 +49,12 @@
                 </div>
 
                 <div class="text-center mt-4">
-                    <a href="/characters" class="btn btn-primary">← Back to Characters</a>
+                    <a href="<%= '/' + ejsContent.type %>" class="btn btn-primary">Back to <%= ejsContent.title %></a>
                 </div>
             <% } else { %>
                 <div class="error-container">
-                    <p class="error-message">Character not found! 😢</p>
-                    <a href="/characters" class="btn btn-primary">Back to Characters</a>
+                    <p class="error-message"><%= ejsContent.title %> not found! 😢</p>
+                    <a href="<%= '/' + ejsContent.type %>" class="btn btn-primary">Back to <%= ejsContent.title %></a>
                 </div>
             <% } %>
         </div>
